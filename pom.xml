@@ -14,6 +14,16 @@
         <module>zce-user</module>
         <module>zce-article</module>
         <module>zce-test</module>
+
+        <module>renren-fast</module>
+        <module>renren-generator</module>
+        <module>zce-common</module>
     </modules>
+
+    <properties>
+        <java.version>1.8</java.version>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+    </properties>
 
 </project>
