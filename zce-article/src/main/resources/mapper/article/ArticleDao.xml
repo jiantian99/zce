@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.laijiantian.zce.article.dao.ArticleDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.laijiantian.zce.article.entity.ArticleEntity" id="articleMap">
+        <result property="id" column="id"/>
+        <result property="articleId" column="article_id"/>
+        <result property="articleTitle" column="article_title"/>
+        <result property="articleContent" column="article_content"/>
+        <result property="articleCoverPicture" column="article_cover_picture"/>
+        <result property="isTop" column="is_top"/>
+        <result property="articleReadingCount" column="article_reading_count"/>
+        <result property="articleCommentCount" column="article_comment_count"/>
+        <result property="articleLikeCount" column="article_like_count"/>
+        <result property="articleCoinCount" column="article_coin_count"/>
+        <result property="articleCollectCount" column="article_collect_count"/>
+        <result property="userId" column="user_id"/>
+        <result property="userName" column="user_name"/>
+        <result property="userHead" column="user_head"/>
+        <result property="articleScore" column="article_score"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="articleStatus" column="article_status"/>
+    </resultMap>
+
+
+</mapper>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.laijiantian.zce.test.dao.PtestDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.laijiantian.zce.test.entity.PtestEntity" id="ptestMap">
+        <result property="id" column="id"/>
+        <result property="ptestId" column="ptest_id"/>
+        <result property="ptestTitle" column="ptest_title"/>
+        <result property="ptestContent" column="ptest_content"/>
+        <result property="sponserId" column="sponser_id"/>
+        <result property="participantCount" column="participant_count"/>
+        <result property="prizeCount" column="prize_count"/>
+        <result property="beginTime" column="begin_time"/>
+        <result property="endTime" column="end_time"/>
+        <result property="publicStatus" column="public_status"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+    </resultMap>
+
+
+</mapper>

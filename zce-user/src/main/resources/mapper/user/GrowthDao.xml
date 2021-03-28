@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.laijiantian.zce.user.dao.GrowthDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.laijiantian.zce.user.entity.GrowthEntity" id="growthMap">
+        <result property="id" column="id"/>
+        <result property="gradeName" column="grade_name"/>
+        <result property="growthValue" column="growth_value"/>
+        <result property="isDefault" column="is_default"/>
+        <result property="remark" column="remark"/>
+        <result property="isDelete" column="is_delete"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+    </resultMap>
+
+
+</mapper>
