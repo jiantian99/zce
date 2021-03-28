@@ -31,6 +31,13 @@ public class ArticleController {
     @Autowired
     private ArticleService articleService;
 
+    @RequestMapping("/user/list")
+    public R userArticle(){
+        ArticleEntity entity = new ArticleEntity();
+        entity.setArticleContent("123");
+        return R.ok().put("articles",Arrays.asList(entity));
+    }
+
     /**
      * 列表
      */

@@ -4,7 +4,10 @@ import java.util.Arrays;
 import java.util.Map;
 
 // import org.apache.shiro.authz.annotation.RequiresPermissions;
+import com.laijiantian.zce.user.feign.ArticleFeignService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,11 +28,34 @@ import com.laijiantian.common.utils.R;
  * @email 872286055@qq.com
  * @date 2021-03-23 23:30:39
  */
+@RefreshScope
 @RestController
 @RequestMapping("user/user")
 public class UserController {
     @Autowired
     private UserService userService;
+
+    @Autowired
+    ArticleFeignService articleFeignService;
+
+    @Value("${user.msg.time}")
+    private Integer msgTime;
+
+    @Value("${test.namespace.group}")
+    private String group;
+
+    @RequestMapping("/articles")
+    public R testFeign(){
+        UserEntity userEntity = new UserEntity();
+        userEntity.setUsername("张三");
+        R userArticle = articleFeignService.userArticle();
+        return R.ok().put("user",userEntity).put("articles",userArticle.get("articles"));
+    }
+
+    @RequestMapping("/test")
+    public R testNacosPro(){
+        return R.ok().put("msgTime",msgTime).put("group",group);
+    }
 
     /**
      * 列表
