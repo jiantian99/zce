@@ -1,6 +1,7 @@
 package com.laijiantian.zce.user.entity;
 
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.baomidou.mybatisplus.annotation.TableName;
 
 import java.io.Serializable;
@@ -43,7 +44,7 @@ public class UserEntity implements Serializable {
 	/**
 	 * 身份证号码
 	 */
-	private Integer idNumber;
+	private String idNumber;
 	/**
 	 * 邮箱
 	 */
@@ -76,6 +77,11 @@ public class UserEntity implements Serializable {
 	 * 用户状态
 	 */
 	private Integer userStatus;
+	/**
+	 * 是否删除
+	 */
+	@TableLogic
+	private Integer isDelete;
 	/**
 	 * 注册时间
 	 */

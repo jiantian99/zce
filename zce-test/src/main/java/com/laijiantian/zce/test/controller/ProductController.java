@@ -1,9 +1,12 @@
 package com.laijiantian.zce.test.controller;
 
 import java.util.Arrays;
+import java.util.Date;
 import java.util.Map;
 
 // import org.apache.shiro.authz.annotation.RequiresPermissions;
+import cn.hutool.core.lang.Snowflake;
+import cn.hutool.core.util.IdUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -60,6 +63,10 @@ public class ProductController {
     @RequestMapping("/save")
     // @RequiresPermissions("test:product:save")
     public R save(@RequestBody ProductEntity product){
+        // 生成雪花ID
+        Snowflake snowflake = IdUtil.getSnowflake(3, 1);
+        product.setProductId(snowflake.nextId());
+        product.setCreateTime(new Date());
 		productService.save(product);
 
         return R.ok();
@@ -71,6 +78,7 @@ public class ProductController {
     @RequestMapping("/update")
     // @RequiresPermissions("test:product:update")
     public R update(@RequestBody ProductEntity product){
+        product.setUpdateTime(new Date());
 		productService.updateById(product);
 
         return R.ok();

@@ -1,9 +1,13 @@
 package com.laijiantian.zce.user.controller;
 
 import java.util.Arrays;
+import java.util.Date;
 import java.util.Map;
 
 // import org.apache.shiro.authz.annotation.RequiresPermissions;
+import cn.hutool.core.lang.Snowflake;
+import cn.hutool.core.util.IdUtil;
+import cn.hutool.crypto.digest.DigestUtil;
 import com.laijiantian.zce.user.feign.ArticleFeignService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -64,7 +68,6 @@ public class UserController {
     // @RequiresPermissions("user:user:list")
     public R list(@RequestParam Map<String, Object> params){
         PageUtils page = userService.queryPage(params);
-
         return R.ok().put("page", page);
     }
 
@@ -86,7 +89,16 @@ public class UserController {
     @RequestMapping("/save")
     // @RequiresPermissions("user:user:save")
     public R save(@RequestBody UserEntity user){
-		userService.save(user);
+        Snowflake snowflake = IdUtil.getSnowflake(1, 1);
+        String password = user.getPassword();
+        if (password.isEmpty()) {
+            password= DigestUtil.md5Hex(IdUtil.simpleUUID());
+            user.setPassword(password);
+        }
+//        System.out.println(password);
+        user.setUserId(snowflake.nextId());
+        user.setCreateTime(new Date());
+        userService.save(user);
 
         return R.ok();
     }
@@ -97,6 +109,7 @@ public class UserController {
     @RequestMapping("/update")
     // @RequiresPermissions("user:user:update")
     public R update(@RequestBody UserEntity user){
+        user.setUpdateTime(new Date());
 		userService.updateById(user);
 
         return R.ok();

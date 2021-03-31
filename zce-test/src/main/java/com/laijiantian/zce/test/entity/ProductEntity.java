@@ -1,6 +1,7 @@
 package com.laijiantian.zce.test.entity;
 
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.baomidou.mybatisplus.annotation.TableName;
 
 import java.io.Serializable;
@@ -31,7 +32,7 @@ public class ProductEntity implements Serializable {
 	/**
 	 * 产品名
 	 */
-	private Long productName;
+	private String productName;
 	/**
 	 * 产品图
 	 */
@@ -49,8 +50,9 @@ public class ProductEntity implements Serializable {
 	 */
 	private Date updateTime;
 	/**
-	 * 
+	 * 是否删除 逻辑删除
 	 */
+	@TableLogic
 	private Integer isDelete;
 
 }

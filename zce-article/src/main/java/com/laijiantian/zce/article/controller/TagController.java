@@ -1,9 +1,12 @@
 package com.laijiantian.zce.article.controller;
 
 import java.util.Arrays;
+import java.util.Date;
 import java.util.Map;
 
 // import org.apache.shiro.authz.annotation.RequiresPermissions;
+import cn.hutool.core.lang.Snowflake;
+import cn.hutool.core.util.IdUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -60,6 +63,10 @@ public class TagController {
     @RequestMapping("/save")
     // @RequiresPermissions("article:tag:save")
     public R save(@RequestBody TagEntity tag){
+        // 雪花id
+        Snowflake tagId = IdUtil.createSnowflake(2, 1);
+        tag.setTagId(tagId.nextId());
+        tag.setCreateTime(new Date());
 		tagService.save(tag);
 
         return R.ok();
@@ -71,6 +78,7 @@ public class TagController {
     @RequestMapping("/update")
     // @RequiresPermissions("article:tag:update")
     public R update(@RequestBody TagEntity tag){
+        tag.setUpdateTime(new Date());
 		tagService.updateById(tag);
 
         return R.ok();
