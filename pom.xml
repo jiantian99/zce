@@ -16,7 +16,7 @@
         <module>zce-test</module>
 
         <module>renren-fast</module>
-        <module>renren-generator</module>
+<!--        <module>renren-generator</module>-->
         <module>zce-common</module>
     </modules>
 
